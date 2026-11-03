@@ -4,3 +4,4 @@ Public pages for the Shelf & Till app.
 
 - Tester sign-up: https://eegbetu.github.io/shelftill/
 - Privacy policy: https://eegbetu.github.io/shelftill/privacy.html
+- Delete your account: https://eegbetu.github.io/shelftill/delete.html
