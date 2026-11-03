@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Test Shelf &amp; Till</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;600&display=swap">
+<link rel="icon" href="icon.png">
+<style>
+/* Layout: one narrow column like a till receipt; three numbered steps (a real sequence), each with one big button. */
+:root{
+  --bg:#eef3ef; --paper:#ffffff; --ink:#14211a; --muted:#56665c; --line:#cfdbd2;
+  --green:#0d6b4a; --green-ink:#ffffff; --soft:#d8ece2; --warn:#8a5a00; --warn-bg:#fff4d6;
+  --f-display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --f-body:"Figtree", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0e1511; --paper:#17211b; --ink:#e6eee9; --muted:#9aaba1; --line:#2a3830;
+  --green:#4cc28f; --green-ink:#06120c; --soft:#183a2b; --warn:#f1c35b; --warn-bg:#2e2510; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0e1511; --paper:#17211b; --ink:#e6eee9; --muted:#9aaba1; --line:#2a3830;
+  --green:#4cc28f; --green-ink:#06120c; --soft:#183a2b; --warn:#f1c35b; --warn-bg:#2e2510; color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 var(--f-body);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
+main{max-width:30rem;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:52px;height:52px;border-radius:14px;background:var(--green);display:grid;place-items:center;flex-shrink:0}
+.logo svg{width:30px;height:30px}
+h1{font:800 clamp(1.7rem,7vw,2.2rem)/1.1 var(--f-display);margin:0;letter-spacing:-.01em;text-wrap:balance}
+.lede{margin:0;color:var(--muted)}
+.req{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.req li{font-size:.85rem;font-weight:600;background:var(--soft);color:var(--green);padding:5px 11px;border-radius:99px}
+ol.steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;counter-reset:s}
+.step{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:10px;counter-increment:s}
+.step h2{margin:0;font:700 1.15rem/1.25 var(--f-display);display:flex;align-items:center;gap:10px}
+.step h2::before{content:counter(s);width:30px;height:30px;border-radius:50%;background:var(--green);color:var(--green-ink);display:grid;place-items:center;font:800 .95rem var(--f-display);flex-shrink:0}
+.step p{margin:0;color:var(--muted);font-size:.95rem}
+.btn{display:block;text-align:center;text-decoration:none;background:var(--green);color:var(--green-ink);font:600 1.05rem var(--f-body);padding:15px 18px;border-radius:12px}
+.btn:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.btn:active{transform:translateY(1px)}
+.help{background:var(--warn-bg);color:var(--ink);border-radius:14px;padding:14px 16px;font-size:.93rem}
+.help b{color:var(--warn)}
+.help p{margin:0 0 6px}.help p:last-child{margin:0}
+code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.9em;background:var(--soft);padding:1px 6px;border-radius:6px;word-break:break-all}
+.contact{font-size:.9rem;color:var(--muted);text-align:center;margin:0}
+.contact span{user-select:all;color:var(--ink);font-weight:600}
+@media (prefers-reduced-motion:reduce){.btn:active{transform:none}}
+</style>
+</head>
+<body>
+<main>
+  <div class="brand">
+    <div class="logo" aria-hidden="true"><svg viewBox="0 0 512 512"><path d="M136 96h240a16 16 0 0 1 16 16v300l-32-20-32 20-32-20-32 20-32-20-32 20-32-20-32 20V112a16 16 0 0 1 16-16z" fill="#fff"/><text x="256" y="268" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="150" fill="#0d6b4a">₦</text></svg></div>
+    <h1>Test Shelf &amp; Till</h1>
+  </div>
+  <p class="lede">Thank you for helping! Shelf &amp; Till is an app for shops to record sales, track stock and keep a debtors book. Follow the three steps in order. It takes about 2 minutes.</p>
+  <ul class="req" aria-label="What you need">
+    <li>Android phone</li><li>Same Gmail as your Play Store</li><li>Keep it 14 days</li>
+  </ul>
+
+  <ol class="steps">
+    <li class="step">
+      <h2>Join the testers group</h2>
+      <p>Tap the button, sign in if asked, then tap <b>Join group</b>.</p>
+      <a class="btn" id="go-group" href="https://groups.google.com/g/shelf-and-till-tester" target="_blank" rel="noopener">Open the group</a>
+    </li>
+    <li class="step">
+      <h2>Become a tester</h2>
+      <p>Come back here after joining, then tap <b>Become a tester</b> on the page that opens.</p>
+      <a class="btn" id="go-test" href="https://play.google.com/apps/testing/com.shelftill.app" target="_blank" rel="noopener">Become a tester</a>
+    </li>
+    <li class="step">
+      <h2>Install the app</h2>
+      <p>Install it from Play Store. Then create a test shop, add a product and try a sale. Please open it every few days.</p>
+      <a class="btn" id="go-install" href="https://play.google.com/store/apps/details?id=com.shelftill.app" target="_blank" rel="noopener">Install from Play Store</a>
+    </li>
+  </ol>
+
+  <div class="help">
+    <p><b>Seeing “App not available”?</b> Do step 1 first, then wait a few minutes and try step 2 again. Use the same Gmail for every step.</p>
+    <p><b>Landed on “My groups” with nothing in it?</b> Tap the 🔍 search icon on that page and search <code>shelf-and-till-tester</code>, then join it.</p>
+  </div>
+
+  <p class="contact">Questions or feedback: <span>stillunsolvedw1x@gmail.com</span> · <a href="privacy.html" style="color:inherit">Privacy policy</a></p>
+</main>
+</body>
+</html>
