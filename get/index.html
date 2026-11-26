@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Get Shelf &amp; Till</title>
+<meta name="description" content="Shelf &amp; Till: sell, track stock and debtors for your shop, even without internet. Free on Android, iPhone and computer.">
+<meta property="og:title" content="Get Shelf &amp; Till for your shop">
+<meta property="og:description" content="Sell, track stock and debtors, and send receipts on WhatsApp. Free on Android, iPhone and computer.">
+<meta property="og:image" content="https://eegbetu.github.io/Shelftill/icon.png">
+<meta name="theme-color" content="#16244a">
+<link rel="icon" href="../icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Figtree:wght@400;600;700&display=swap">
+<script>
+  // Android phones go straight to the Play Store. Everyone else sees the right steps below.
+  (function(){
+    var ua = navigator.userAgent || "";
+    var ios = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+    var android = /Android/.test(ua);
+    var stay = /[?&]stay\b/.test(location.search);
+    document.documentElement.setAttribute("data-device", ios ? "ios" : android ? "android" : "desktop");
+    if (android && !stay) location.replace("https://play.google.com/store/apps/details?id=com.shelftill.app");
+  })();
+</script>
+<style>
+:root{
+  --bg:#f3f4f8; --paper:#ffffff; --ink:#16244a; --muted:#56607a; --line:#dde1ec;
+  --accent:#16244a; --accent-ink:#ffffff; --amber:#f5b301; --soft:#e7ebf5;
+  --f-display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --f-body:"Figtree",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0d1222; --paper:#161d33; --ink:#eef1f8; --muted:#a6afc6; --line:#2a3352;
+  --accent:#f5b301; --accent-ink:#16244a; --soft:#1f2842; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0d1222; --paper:#161d33; --ink:#eef1f8; --muted:#a6afc6; --line:#2a3352;
+  --accent:#f5b301; --accent-ink:#16244a; --soft:#1f2842; color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 var(--f-body);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
+main{max-width:30rem;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:56px;height:56px;border-radius:15px;background:#16244a;display:grid;place-items:center;flex-shrink:0;box-shadow:inset 0 -5px 0 var(--amber)}
+.logo svg{width:36px;height:36px}
+.name{font:800 1.2rem/1 var(--f-display)}
+h1{font:800 clamp(1.8rem,7.5vw,2.4rem)/1.08 var(--f-display);margin:4px 0 0;letter-spacing:-.015em;text-wrap:balance}
+.lede{margin:0;color:var(--muted)}
+.feats{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.feats li{font-size:.85rem;font-weight:600;background:var(--soft);padding:5px 11px;border-radius:99px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:12px}
+.card h2{margin:0;font:700 1.2rem/1.25 var(--f-display)}
+.card p{margin:0;color:var(--muted);font-size:.95rem}
+ol.steps{margin:0;padding:0;list-style:none;counter-reset:s;display:flex;flex-direction:column;gap:10px}
+ol.steps li{counter-increment:s;display:flex;gap:12px;align-items:flex-start;font-size:.98rem}
+ol.steps li::before{content:counter(s);flex:none;width:28px;height:28px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font:800 .9rem var(--f-display);margin-top:1px}
+.ico{display:inline-block;vertical-align:-4px;width:20px;height:20px}
+.btn{display:block;text-align:center;text-decoration:none;background:var(--accent);color:var(--accent-ink);font:700 1.05rem var(--f-body);padding:15px 18px;border-radius:13px}
+.btn.alt{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.note{font-size:.85rem;color:var(--muted);margin:0}
+.show-ios,.show-android,.show-desktop{display:none}
+[data-device="ios"] .show-ios,[data-device="android"] .show-android,[data-device="desktop"] .show-desktop{display:flex}
+footer{text-align:center;font-size:.85rem;color:var(--muted)}
+footer a{color:inherit}
+</style>
+</head>
+<body>
+<main>
+  <div class="brand"><div class="logo" aria-hidden="true"><svg viewBox="96 80 320 340"><path d="M136 96h240a16 16 0 0 1 16 16v300l-32-20-32 20-32-20-32 20-32-20-32 20-32-20-32 20V112a16 16 0 0 1 16-16z" fill="#fff"/><g fill="#16244a"><rect x="172" y="150" width="12" height="120"/><rect x="194" y="150" width="6" height="120"/><rect x="210" y="150" width="16" height="120"/><rect x="236" y="150" width="6" height="120"/><rect x="252" y="150" width="10" height="120"/><rect x="272" y="150" width="6" height="120"/><rect x="288" y="150" width="14" height="120"/><rect x="312" y="150" width="6" height="120"/><rect x="328" y="150" width="12" height="120"/></g><rect x="176" y="306" width="160" height="14" rx="7" fill="#f5b301"/><rect x="176" y="336" width="104" height="14" rx="7" fill="#f5b301"/></svg></div><span class="name">Shelf &amp; Till</span></div>
+  <div>
+    <h1>Run your shop from your phone</h1>
+    <p class="lede">Sell, track stock and who owes you, and send receipts on WhatsApp. Works without internet.</p>
+  </div>
+  <ul class="feats"><li>Receipts &amp; invoices</li><li>Stock alerts</li><li>Debtors</li><li>Staff accounts</li><li>Daily profit</li></ul>
+
+  <section class="card show-ios" aria-labelledby="h-ios">
+    <h2 id="h-ios">On iPhone</h2>
+    <p>Shelf &amp; Till works in Safari and sits on your home screen like an app.</p>
+    <ol class="steps">
+      <li><span>Open this page in <b>Safari</b>. If you're inside WhatsApp, tap <b>⋯</b> or the share icon and choose <b>Open in Safari</b>.</span></li>
+      <li><span>Tap the button below to open Shelf &amp; Till.</span></li>
+      <li><span>Tap <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Share"><path d="M12 3v13M7 8l5-5 5 5M5 12v8h14v-8"/></svg> <b>Share</b>, then <b>Add to Home Screen</b>.</span></li>
+    </ol>
+    <a class="btn" href="../app/">Open Shelf &amp; Till</a>
+  </section>
+
+  <section class="card show-android" aria-labelledby="h-and">
+    <h2 id="h-and">On Android</h2>
+    <p>Get the full app with barcode scanning and receipt printing.</p>
+    <a class="btn" href="https://play.google.com/store/apps/details?id=com.shelftill.app">Get it on Google Play</a>
+  </section>
+
+  <section class="card show-desktop" aria-labelledby="h-pc">
+    <h2 id="h-pc">On a computer</h2>
+    <p>Use Shelf &amp; Till in your browser. Sign in with the same account on your phone.</p>
+    <a class="btn" href="../app/">Open Shelf &amp; Till in the browser</a>
+  </section>
+  <section class="card show-desktop" aria-labelledby="h-pc2">
+    <h2 id="h-pc2">On your phone</h2>
+    <p><b>Android:</b> get it on Google Play. <b>iPhone:</b> open this page on your iPhone in Safari.</p>
+    <a class="btn alt" href="https://play.google.com/store/apps/details?id=com.shelftill.app">Get it on Google Play</a>
+  </section>
+
+  <p class="note">Free to start. Your shop's records are private to your shop.</p>
+  <footer><a href="../privacy.html">Privacy policy</a></footer>
+</main>
+</body>
+</html>
