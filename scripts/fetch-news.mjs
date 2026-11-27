@@ -8,7 +8,6 @@ const FEEDS = {
   top: [
     ["Premium Times", "https://www.premiumtimesng.com/feed"],
     ["Channels TV", "https://www.channelstv.com/feed/"],
-    ["Punch", "https://punchng.com/feed/"],
     ["Vanguard", "https://www.vanguardngr.com/category/national-news/feed/"],
     ["BBC News", "https://feeds.bbci.co.uk/news/world/africa/rss.xml"],
   ],
@@ -17,11 +16,10 @@ const FEEDS = {
     ["Daily Post", "https://dailypost.ng/politics/feed/"],
     ["The Guardian Nigeria", "https://guardian.ng/category/politics/feed/"],
     ["Leadership", "https://leadership.ng/category/politics/feed/"],
-    ["Premium Times", "https://www.premiumtimesng.com/category/news/top-news/feed"],
   ],
   nigeria: [
     ["Nairametrics", "https://nairametrics.com/feed/"],
-    ["BusinessDay", "https://businessday.ng/feed/"],
+    ["BusinessDay", "https://businessday.ng/category/business-economy/feed/"],
     ["Premium Times", "https://www.premiumtimesng.com/business/feed"],
     ["Vanguard", "https://www.vanguardngr.com/category/business/feed/"],
   ],

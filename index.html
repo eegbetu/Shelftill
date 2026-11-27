@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Shelf &amp; Till · Business news, naira rates and your shop's till</title>
-<meta name="description" content="Today's Nigerian and world business news, naira exchange rates and tips for shop owners. Sign in to Shelf &amp; Till to run your sales, stock, debtors and invoices from any phone or computer.">
+<title>Shelf &amp; Till · News, politics, business, sports, weather and your shop's till</title>
+<meta name="description" content="Today's Nigerian and world news: politics, business, sports, entertainment and tech, plus weather, naira rates and tips for shop owners. Sign in to Shelf &amp; Till to run your sales, stock, debtors and invoices from any phone or computer.">
 <link rel="canonical" href="https://eegbetu.github.io/Shelftill/">
 <meta property="og:title" content="Shelf &amp; Till">
 <meta property="og:description" content="Business news, naira rates and tips for shop owners, plus your shop's till, stock and debtors in one place.">
@@ -120,6 +120,35 @@ ol.tips li::before{content:counter(t);flex:none;width:26px;height:26px;border-ra
 .getlist small{display:block;color:var(--muted);font-weight:500}
 .getlist svg{width:22px;height:22px;flex:none}
 
+.tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:0 0 14px;background:transparent;padding:0;border-radius:0}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{flex:none;border:1px solid var(--line);background:var(--paper);color:var(--muted);font:700 .9rem var(--f-body);padding:8px 14px;border-radius:99px;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--navy);border-color:var(--navy);color:#fff;box-shadow:none}
+.strips{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:26px}
+.strip{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:16px 16px 8px}
+.strip h3{margin:0 0 4px;font:800 1.05rem/1.2 var(--f-display);display:flex;align-items:center;gap:8px}
+.strip h3::before{content:"";width:6px;height:18px;border-radius:3px;background:var(--amber)}
+.strip .row{padding:10px 0}
+.strip .row h3{font:600 .95rem/1.3 var(--f-body);display:block}
+.strip .row h3::before{display:none}
+.strip .all{display:block;width:100%;text-align:left;border:0;background:none;padding:10px 0 8px;font:700 .9rem var(--f-body);color:var(--link);cursor:pointer;border-top:1px solid var(--line)}
+.sub{margin:0 0 4px;font:700 .78rem var(--f-body);text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.chg{font-size:.78rem;font-weight:700;margin-left:6px}
+.chg.up{color:var(--up)}.chg.down{color:#dc2626}
+.wxhead{display:flex;align-items:center;gap:8px;margin-bottom:8px}.wxhead h2{margin:0;flex:1}
+.wxsel{font:600 .9rem var(--f-body);color:var(--ink);background:var(--sunk);border:1px solid var(--line);border-radius:8px;padding:6px 8px;max-width:60%}
+.wxnow{display:flex;align-items:center;gap:14px}
+.wxicon{font-size:2.6rem;line-height:1}
+.wxtemp{font:800 2.4rem/1 var(--f-display)}
+.wxdesc{color:var(--muted);font-size:.9rem}
+.wxdays{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:14px;text-align:center}
+.wxdays div{background:var(--sunk);border-radius:10px;padding:8px 2px;font-size:.82rem}
+.wxdays b{display:block;font-size:.78rem;color:var(--muted)}
+.wxdays span{display:block;font-size:1.3rem;line-height:1.4}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media (max-width:900px){.strips{grid-template-columns:1fr}}
+nav.sections a:nth-child(n+6){display:none}
+nav.sections a{padding:8px 10px}
 footer{border-top:1px solid var(--line);padding:24px 0 calc(32px + env(safe-area-inset-bottom,0px));color:var(--muted);font-size:.88rem}
 footer .links{display:flex;flex-wrap:wrap;gap:6px 18px;margin-bottom:10px}
 footer a{color:var(--ink);font-weight:600}
@@ -130,7 +159,7 @@ footer a{color:var(--ink);font-weight:600}
   aside{position:static;display:contents}
   .shop{order:-1}
   #newsCol{order:0}
-  .ratesCard{order:1}.tipsCard{order:2}.getCard{order:3}
+  .weatherCard{order:1}.ratesCard{order:2}.tipsCard{order:3}.getCard{order:4}
   .grid{display:flex;flex-direction:column;align-items:stretch}
   .story p,.lead p{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
   nav.sections{display:none}
@@ -148,13 +177,13 @@ footer a{color:var(--ink);font-weight:600}
   <div class="wrap">
     <div class="bar">
       <a class="brand" href="./" aria-label="Shelf &amp; Till home"><span class="mark" aria-hidden="true"><svg viewBox="96 80 320 340"><path d="M136 96h240a16 16 0 0 1 16 16v300l-32-20-32 20-32-20-32 20-32-20-32 20-32-20-32 20V112a16 16 0 0 1 16-16z" fill="#fff"/><g fill="#16244a"><rect x="172" y="150" width="12" height="120"/><rect x="194" y="150" width="6" height="120"/><rect x="210" y="150" width="16" height="120"/><rect x="236" y="150" width="6" height="120"/><rect x="252" y="150" width="10" height="120"/><rect x="272" y="150" width="6" height="120"/><rect x="288" y="150" width="14" height="120"/><rect x="312" y="150" width="6" height="120"/><rect x="328" y="150" width="12" height="120"/></g><rect x="176" y="306" width="160" height="14" rx="7" fill="#f5b301"/><rect x="176" y="336" width="104" height="14" rx="7" fill="#f5b301"/></svg></span><b>Shelf &amp; Till</b></a>
-      <nav class="sections" aria-label="Sections"><a href="#news">Business news</a><a href="#rates">Naira rates</a><a href="#tips">Shop tips</a><a href="#get">Get the app</a></nav>
+      <nav class="sections" aria-label="Sections"><a href="#news" data-go="top">Top stories</a><a href="#news" data-go="politics">Politics</a><a href="#news" data-go="nigeria">Business</a><a href="#news" data-go="world">World</a><a href="#news" data-go="sports">Sports</a><a href="#news" data-go="entertainment">Entertainment</a><a href="#news" data-go="tech">Tech</a><a href="#markets">Markets</a></nav>
       <div class="acts">
         <a class="btn ghost hide-sm" href="app/#signup" data-signed-out>Create account</a>
         <a class="btn amber" href="app/" id="topIn">Sign in</a>
       </div>
     </div>
-    <div class="chips" aria-label="Sections"><a href="#news">Business news</a><a href="#rates">Naira rates</a><a href="#tips">Shop tips</a><a href="#get">Get the app</a></div>
+    <div class="chips" aria-label="Sections"><a href="#news" data-go="top">Top stories</a><a href="#news" data-go="politics">Politics</a><a href="#news" data-go="nigeria">Business</a><a href="#news" data-go="world">World</a><a href="#news" data-go="sports">Sports</a><a href="#news" data-go="entertainment">Entertainment</a><a href="#news" data-go="tech">Tech</a><a href="#markets">Markets</a><a href="#weather">Weather</a></div>
   </div>
 </header>
 
@@ -164,17 +193,15 @@ footer a{color:var(--ink);font-weight:600}
   <div class="grid">
     <section id="newsCol" aria-labelledby="newsTitle">
       <div class="news-head" id="news">
-        <h2 id="newsTitle">Business news</h2>
-        <div class="tabs" role="tablist" aria-label="News region">
-          <button role="tab" id="tabNg" aria-selected="true" aria-controls="stories" data-k="nigeria">Nigeria</button>
-          <button role="tab" id="tabW" aria-selected="false" aria-controls="stories" data-k="world">World</button>
-        </div>
+        <h2 id="newsTitle">Top stories</h2>
       </div>
+      <div class="tabs" role="tablist" aria-label="News sections" id="tabs"></div>
       <div id="stories" role="tabpanel" aria-live="polite">
         <div class="lead"><div class="skel" style="height:14px;width:30%"></div><div class="skel" style="height:30px;margin:14px 0 10px"></div><div class="skel" style="height:30px;width:70%"></div></div>
         <div class="two"><div class="story"><div class="skel" style="height:70px"></div></div><div class="story"><div class="skel" style="height:70px"></div></div></div>
       </div>
       <p class="note" id="newsNote">Headlines and summaries come from the publishers named on each story. Tap a story to read it on their site.</p>
+      <div class="strips" id="strips" aria-label="More news"></div>
     </section>
 
     <aside>
@@ -187,10 +214,20 @@ footer a{color:var(--ink);font-weight:600}
         </div>
       </section>
 
-      <section class="card ratesCard" id="rates" aria-labelledby="ratesTitle">
-        <h2 id="ratesTitle">Naira today</h2>
+      <section class="card weatherCard" id="weather" aria-labelledby="wxTitle">
+        <div class="wxhead"><h2 id="wxTitle">Weather</h2>
+          <label class="sr" for="wxCity">City</label><select id="wxCity" class="wxsel"></select></div>
+        <div id="wxBody"><div class="skel" style="height:96px"></div></div>
+      </section>
+
+      <section class="card ratesCard" id="markets" aria-labelledby="ratesTitle">
+        <h2 id="ratesTitle">Markets</h2>
+        <h3 class="sub">Naira exchange rates</h3>
         <div class="rates" id="rateList"><div class="skel" style="height:120px"></div></div>
-        <p class="small" id="ratesNote" style="margin:10px 0 0">Approximate mid-market rates. Banks and BDCs may differ.</p>
+        <p class="small" id="ratesNote" style="margin:8px 0 0">Approximate mid-market rates. Banks and BDCs may differ.</p>
+        <h3 class="sub" style="margin-top:16px">Crypto in naira</h3>
+        <div class="rates" id="cryptoList"><div class="skel" style="height:80px"></div></div>
+        <p class="small" id="cryptoNote" style="margin:8px 0 0"></p>
       </section>
 
       <section class="card tipsCard" id="tips" aria-labelledby="tipsTitle">
@@ -212,8 +249,8 @@ footer a{color:var(--ink);font-weight:600}
 
 <footer>
   <div class="wrap">
-    <div class="links"><a href="privacy.html">Privacy</a><a href="delete.html">Delete your account</a><a href="get/">Get the app</a><a href="testers/">Testers</a><a href="mailto:stillunsolvedw1x@gmail.com">Contact support</a></div>
-    <div>Shelf &amp; Till: point of sale, stock and debtors for small shops. News headlines belong to their publishers. <span id="ratesCredit"></span></div>
+    <div class="links"><a href="privacy.html">Privacy</a><a href="delete.html">Delete your account</a><a href="get/">Get the app</a><a href="testers/">Testers</a><a href="#weather">Weather</a><a href="mailto:stillunsolvedw1x@gmail.com">Contact support</a></div>
+    <div>Shelf &amp; Till: point of sale, stock and debtors for small shops. News headlines belong to their publishers. <span id="ratesCredit"></span> Weather by <a href="https://open-meteo.com" rel="noopener">Open-Meteo</a>. Crypto prices by <a href="https://www.coingecko.com" rel="noopener">CoinGecko</a>.</div>
   </div>
 </footer>
 
@@ -221,7 +258,9 @@ footer a{color:var(--ink);font-weight:600}
 (function(){
   "use strict";
   var $ = function(s){ return document.querySelector(s); };
-  var data = null, region = "nigeria";
+  var data = null, region = "top";
+  var SECTIONS = [["top","Top stories"],["politics","Politics"],["nigeria","Business"],["world","World"],["sports","Sports"],["entertainment","Entertainment"],["tech","Tech"]];
+  var NAME = {}; SECTIONS.forEach(function(x){ NAME[x[0]] = x[1]; });
 
   // Date and greeting in the visitor's own time
   var now = new Date(), h = now.getHours();
@@ -251,9 +290,29 @@ footer a{color:var(--ink);font-weight:600}
     var rest = list.slice(5);
     if (rest.length) { var more = el("div", "more"); rest.forEach(function(s){ var a = link(s, "row"); a.appendChild(meta(s)); a.appendChild(el("h3", "", s.title)); more.appendChild(a); }); box.appendChild(more); }
   }
-  document.querySelectorAll(".tabs button").forEach(function(b){
-    b.addEventListener("click", function(){ region = b.dataset.k; document.querySelectorAll(".tabs button").forEach(function(x){ x.setAttribute("aria-selected", x === b); }); drawNews(); });
-  });
+  // Section tabs above the stories
+  var tabs = $("#tabs");
+  SECTIONS.forEach(function(x){ var b = el("button", "", x[1]); b.type = "button"; b.setAttribute("role", "tab"); b.dataset.k = x[0]; b.setAttribute("aria-selected", x[0] === region); b.setAttribute("aria-controls", "stories");
+    b.addEventListener("click", function(){ show(x[0], false); }); tabs.appendChild(b); });
+  function show(k, scroll){
+    region = k; $("#newsTitle").textContent = NAME[k];
+    tabs.querySelectorAll("button").forEach(function(x){ x.setAttribute("aria-selected", x.dataset.k === k); if (x.dataset.k === k && x.scrollIntoView) x.scrollIntoView({block:"nearest", inline:"center"}); });
+    drawNews(); drawStrips();
+    if (scroll) $("#news").scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"});
+  }
+  document.querySelectorAll("[data-go]").forEach(function(a){ a.addEventListener("click", function(e){ e.preventDefault(); show(a.dataset.go, true); }); });
+
+  // "More news": three headlines from every other section, Yahoo style
+  function drawStrips(){
+    var box = $("#strips"); box.replaceChildren(); if (!data) return;
+    SECTIONS.forEach(function(x){
+      if (x[0] === region) return; var list = (data[x[0]] || []).slice(0, 3); if (!list.length) return;
+      var c = el("section", "strip"); c.appendChild(el("h3", "", x[1]));
+      list.forEach(function(st){ var a = link(st, "row"); a.appendChild(meta(st)); a.appendChild(el("h3", "", st.title)); c.appendChild(a); });
+      var all = el("button", "all", "More " + x[1].toLowerCase() + " →"); all.type = "button"; all.addEventListener("click", function(){ show(x[0], true); }); c.appendChild(all);
+      box.appendChild(c);
+    });
+  }
 
   var NAMES = {USD:"US dollar", GBP:"British pound", EUR:"Euro", CNY:"Chinese yuan", GHS:"Ghana cedi"};
   function drawRates(){
@@ -268,6 +327,45 @@ footer a{color:var(--ink);font-weight:600}
     $("#ratesNote").textContent = "Approximate mid-market rates for 1 unit" + (on ? ", as of " + on : "") + ". Banks and BDCs may differ.";
     var c = $("#ratesCredit"); c.replaceChildren(document.createTextNode("Exchange rates by ")); var a = el("a", "", "ExchangeRate-API"); a.href = "https://www.exchangerate-api.com"; a.rel = "noopener"; c.appendChild(a); c.appendChild(document.createTextNode("."));
   }
+
+  function drawCrypto(){
+    var box = $("#cryptoList"), c = data && data.crypto; box.replaceChildren();
+    if (!c || !c.list || !c.list.length) { box.appendChild(el("p", "small", "Prices will appear here shortly.")); return; }
+    c.list.forEach(function(x){
+      var row = el("div", "rate"); row.appendChild(el("span", "code", x.code)); row.appendChild(el("span", "nm", x.name));
+      var v = el("span", "v", "₦" + Number(x.ngn).toLocaleString("en-NG", {maximumFractionDigits: x.ngn < 10000 ? 2 : 0}));
+      if (typeof x.change === "number") v.appendChild(el("span", "chg " + (x.change >= 0 ? "up" : "down"), (x.change >= 0 ? "▲ " : "▼ ") + Math.abs(x.change).toFixed(1) + "%"));
+      row.appendChild(v); box.appendChild(row);
+    });
+    $("#cryptoNote").textContent = "Change over 24 hours. Updated " + ago(c.asOf) + ". Prices by CoinGecko. Crypto prices move fast; this is not advice.";
+  }
+
+  // Weather from Open-Meteo, for a city the visitor picks (remembered on this device)
+  var CITIES = [["Lagos",6.5244,3.3792],["Abuja",9.0765,7.3986],["Port Harcourt",4.8156,7.0498],["Kano",12.0022,8.592],["Ibadan",7.3775,3.947],["Benin City",6.335,5.6037],["Enugu",6.4584,7.5464],["Kaduna",10.5105,7.4165],["Onitsha",6.1413,6.8027],["Aba",5.1066,7.3667],["Jos",9.8965,8.8583],["Ilorin",8.4966,4.5421],["Owerri",5.4836,7.0333],["Warri",5.5167,5.75],["Calabar",4.9757,8.3417],["Uyo",5.0377,7.9128],["Abeokuta",7.1475,3.3619],["Akure",7.2571,5.2058],["Maiduguri",11.8333,13.15],["Sokoto",13.0059,5.2476],["Accra",5.6037,-0.187],["Nairobi",-1.2921,36.8219],["Johannesburg",-26.2041,28.0473],["London",51.5072,-0.1276]];
+  var WX = function(c){ return c === 0 ? ["☀️","Clear sky"] : c <= 2 ? ["🌤️","Partly cloudy"] : c === 3 ? ["☁️","Cloudy"] : c <= 48 ? ["🌫️","Fog or haze"] : c <= 57 ? ["🌦️","Drizzle"] : c <= 67 ? ["🌧️","Rain"] : c <= 77 ? ["🌨️","Snow"] : c <= 82 ? ["🌧️","Rain showers"] : c <= 86 ? ["🌨️","Snow showers"] : ["⛈️","Thunderstorm"]; };
+  var sel = $("#wxCity"), cityName = "Lagos";
+  try { var saved = localStorage.getItem("st-home-city"); if (saved && CITIES.some(function(c){ return c[0] === saved; })) cityName = saved; } catch(e){}
+  CITIES.forEach(function(c){ var o = el("option", "", c[0]); o.value = c[0]; if (c[0] === cityName) o.selected = true; sel.appendChild(o); });
+  sel.addEventListener("change", function(){ cityName = sel.value; try { localStorage.setItem("st-home-city", cityName); } catch(e){} loadWeather(); });
+  function loadWeather(){
+    var c = CITIES.filter(function(x){ return x[0] === cityName; })[0], box = $("#wxBody");
+    box.replaceChildren(el("div", "skel")); box.firstChild.style.height = "96px";
+    var url = "https://api.open-meteo.com/v1/forecast?latitude=" + c[1] + "&longitude=" + c[2] + "&current=temperature_2m,weather_code,relative_humidity_2m,wind_speed_10m&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=auto&forecast_days=4";
+    fetch(url).then(function(r){ return r.ok ? r.json() : null; }).then(function(w){
+      box.replaceChildren(); if (!w || !w.current) { box.appendChild(el("p", "small", "Weather isn't available right now.")); return; }
+      var cur = WX(w.current.weather_code), now = el("div", "wxnow");
+      now.appendChild(el("span", "wxicon", cur[0])); var t = el("div"); t.appendChild(el("div", "wxtemp", Math.round(w.current.temperature_2m) + "°C"));
+      t.appendChild(el("div", "wxdesc", cur[1] + " · humidity " + Math.round(w.current.relative_humidity_2m) + "% · wind " + Math.round(w.current.wind_speed_10m) + " km/h")); now.appendChild(t); box.appendChild(now);
+      var days = el("div", "wxdays");
+      (w.daily.time || []).forEach(function(d, i){ var dd = el("div"); var nm = i === 0 ? "Today" : new Date(d + "T12:00").toLocaleDateString("en-NG", {weekday: "short"});
+        dd.appendChild(el("b", "", nm)); dd.appendChild(el("span", "", WX(w.daily.weather_code[i])[0]));
+        dd.appendChild(document.createTextNode(Math.round(w.daily.temperature_2m_max[i]) + "° / " + Math.round(w.daily.temperature_2m_min[i]) + "°"));
+        var rain = w.daily.precipitation_probability_max && w.daily.precipitation_probability_max[i]; if (rain != null) { var r = el("b", "", "💧 " + rain + "%"); r.style.marginTop = "2px"; dd.appendChild(r); }
+        days.appendChild(dd); });
+      box.appendChild(days);
+    }).catch(function(){ box.replaceChildren(el("p", "small", "Weather isn't available right now.")); });
+  }
+  loadWeather();
 
   // Our own tips for shop owners, three a day, a different set each day.
   var TIPS = [
@@ -296,8 +394,8 @@ footer a{color:var(--ink);font-weight:600}
   (function(){ var day = Math.floor(Date.now() / 864e5), box = $("#tipList");
     for (var i = 0; i < 3; i++) box.appendChild(el("li", "", TIPS[(day * 3 + i) % TIPS.length])); })();
 
-  fetch("news.json", {cache: "no-cache"}).then(function(r){ return r.ok ? r.json() : null; }).then(function(j){ data = j; drawNews(); drawRates(); })
-    .catch(function(){ data = null; drawNews(); drawRates(); });
+  fetch("news.json", {cache: "no-cache"}).then(function(r){ return r.ok ? r.json() : null; }).then(function(j){ data = j; drawNews(); drawStrips(); drawRates(); drawCrypto(); })
+    .catch(function(){ data = null; drawNews(); drawRates(); drawCrypto(); });
 
   // Already signed in on this device? Then the buttons open the shop straight away.
   try {
