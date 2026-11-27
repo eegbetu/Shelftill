@@ -25,6 +25,9 @@ const decode = s => s.replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCodePoin
   .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(+d)).replace(/&([a-z]+);/gi, (m, n) => ENT[n.toLowerCase()] ?? m);
 const clean = s => decode(String(s || "").replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1")).replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
 const tag = (xml, name) => { const m = xml.match(new RegExp(`<${name}[^>]*>([\\s\\S]*?)</${name}>`, "i")); return m ? m[1] : ""; };
+// Summaries without the clutter some feeds add ("read more…", "The post … appeared first on …", a leading dash).
+const tidy = s => s.replace(/\s*The post .*? appeared first on .*$/i, "").replace(/\s*(read more|continue reading)\b.*$/i, "")
+  .replace(/\[(…|\.\.\.)\]\s*$/, "").replace(/^[\s—–-]+/, "").trim();
 const short = (s, n) => s.length <= n ? s : s.slice(0, s.lastIndexOf(" ", n) > 40 ? s.lastIndexOf(" ", n) : n).replace(/[,.;:\s]+$/, "") + "…";
 
 async function get(url) {
@@ -39,7 +42,7 @@ async function readFeed([source, url]) {
     const items = [...xml.matchAll(/<item[\s>][\s\S]*?<\/item>/gi)].map(m => m[0]).slice(0, 15).map(it => {
       let link = clean(tag(it, "link")) || clean(tag(it, "guid"));
       const t = Date.parse(clean(tag(it, "pubDate")) || clean(tag(it, "dc:date")));
-      return { title: clean(tag(it, "title")), link, summary: short(clean(tag(it, "description")), 170), source, t: isNaN(t) ? 0 : t };
+      return { title: clean(tag(it, "title")), link, summary: short(tidy(clean(tag(it, "description"))), 170), source, t: isNaN(t) ? 0 : t };
     }).filter(i => i.title && /^https?:\/\//.test(i.link) && i.t && Date.now() - i.t < MAX_AGE_H * 3600e3 && i.t < Date.now() + 3600e3);
     console.log(`${source}: ${items.length} recent stories`);
     return items.slice(0, PER_SOURCE);
