@@ -24,6 +24,8 @@
 img{max-width:100%}
 body{margin:0}
 </style>
+<script>/* Light / dark / phone default, chosen in Account: set before the page draws so it never flashes */
+try{var t=localStorage.getItem("st-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
 <style>
 /* Layout: one-column phone app — sticky header, scrolling panel, fixed bottom tab bar; cart rides above the tabs on Sell. */
 :root{
@@ -43,6 +45,7 @@ body{margin:0}
   --accent:#f5b301; --accent-fg:#141c33; --accent-soft:#3a3214;
   --amber:#f5b301; --amber-fg:#141c33;
   --warn:#f0b35a; --warn-soft:#3a2a12; --bad:#ff8a80; --bad-soft:#3d1a18; color-scheme:dark}}
+:root[data-theme="light"]{color-scheme:light}
 :root[data-theme="dark"]{
   --bg:#0e1322; --surface:#171e33; --sunk:#10162a; --line:#2a3350;
   --fg:#e8ecf6; --muted:#9aa3bd;
@@ -180,7 +183,7 @@ body.authing header.top, body.authing main, body.authing nav.tabs, body.authing 
 .auth-err{color:var(--bad);font-size:14px;margin:0}
 .linkbtn{background:none;border:0;padding:0;color:var(--accent);font-weight:600;text-decoration:underline;cursor:pointer}
 </style>
-  <script type="module" crossorigin src="./assets/index-Dm92uvBI.js"></script>
+  <script type="module" crossorigin src="./assets/index-GJCX1oR6.js"></script>
 </head>
 <body class="authing">
 <div id="auth"></div>
