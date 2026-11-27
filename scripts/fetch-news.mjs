@@ -14,12 +14,10 @@ const FEEDS = {
   politics: [
     ["Vanguard", "https://www.vanguardngr.com/category/politics/feed/"],
     ["Daily Post", "https://dailypost.ng/politics/feed/"],
-    ["The Guardian Nigeria", "https://guardian.ng/category/politics/feed/"],
     ["Leadership", "https://leadership.ng/category/politics/feed/"],
   ],
   nigeria: [
     ["Nairametrics", "https://nairametrics.com/feed/"],
-    ["BusinessDay", "https://businessday.ng/category/business-economy/feed/"],
     ["Premium Times", "https://www.premiumtimesng.com/business/feed"],
     ["Vanguard", "https://www.vanguardngr.com/category/business/feed/"],
   ],
