@@ -3,7 +3,20 @@
 // the source and a link to the full story on the source's own site are kept.
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 
+// Sections of the home page, and the publishers' public headline feeds for each.
 const FEEDS = {
+  top: [
+    ["Premium Times", "https://www.premiumtimesng.com/feed"],
+    ["Vanguard", "https://www.vanguardngr.com/feed/"],
+    ["Channels TV", "https://www.channelstv.com/feed/"],
+    ["BBC News", "https://feeds.bbci.co.uk/news/world/africa/rss.xml"],
+  ],
+  politics: [
+    ["Vanguard", "https://www.vanguardngr.com/category/politics/feed/"],
+    ["Channels TV", "https://www.channelstv.com/category/politics/feed/"],
+    ["Premium Times", "https://www.premiumtimesng.com/news/politics/feed"],
+    ["The Cable", "https://www.thecable.ng/category/politics/feed"],
+  ],
   nigeria: [
     ["Nairametrics", "https://nairametrics.com/feed/"],
     ["BusinessDay", "https://businessday.ng/feed/"],
@@ -11,13 +24,33 @@ const FEEDS = {
     ["Vanguard", "https://www.vanguardngr.com/category/business/feed/"],
   ],
   world: [
-    ["BBC News", "https://feeds.bbci.co.uk/news/business/rss.xml"],
-    ["TechCabal", "https://techcabal.com/feed/"],
+    ["BBC News", "https://feeds.bbci.co.uk/news/world/rss.xml"],
+    ["Al Jazeera", "https://www.aljazeera.com/xml/rss/all.xml"],
     ["CNBC", "https://www.cnbc.com/id/10001147/device/rss/rss.html"],
+    ["BBC News", "https://feeds.bbci.co.uk/news/business/rss.xml"],
+  ],
+  sports: [
+    ["BBC Sport", "https://feeds.bbci.co.uk/sport/football/rss.xml"],
+    ["Vanguard", "https://www.vanguardngr.com/category/sports/feed/"],
+    ["Channels TV", "https://www.channelstv.com/category/sports/feed/"],
+    ["BBC Sport", "https://feeds.bbci.co.uk/sport/rss.xml"],
+  ],
+  entertainment: [
+    ["Vanguard", "https://www.vanguardngr.com/category/entertainment/feed/"],
+    ["BBC News", "https://feeds.bbci.co.uk/news/entertainment_and_arts/rss.xml"],
+    ["Pulse Nigeria", "https://www.pulse.ng/rss"],
+    ["Premium Times", "https://www.premiumtimesng.com/entertainment/feed"],
+  ],
+  tech: [
+    ["TechCabal", "https://techcabal.com/feed/"],
+    ["Techpoint Africa", "https://techpoint.africa/feed/"],
+    ["BBC News", "https://feeds.bbci.co.uk/news/technology/rss.xml"],
+    ["Techeconomy", "https://techeconomy.ng/feed/"],
   ],
 };
 const RATES_URL = "https://open.er-api.com/v6/latest/USD";
 const RATE_CODES = ["USD", "GBP", "EUR", "CNY", "GHS"];
+const CRYPTO_URL = "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,tether&vs_currencies=ngn,usd&include_24hr_change=true";
 const PER_SOURCE = 4, PER_SECTION = 14, MAX_AGE_H = 72;
 
 const ENT = { amp: "&", lt: "<", gt: ">", quot: '"', apos: "'", nbsp: " ", rsquo: "’", lsquo: "‘", rdquo: "”", ldquo: "“", ndash: "–", mdash: "—", hellip: "…", naira: "₦" };
@@ -64,9 +97,25 @@ async function rates() {
   } catch (e) { console.log(`Rates: failed (${e.message})`); return null; }
 }
 
+async function crypto() {
+  try {
+    const j = JSON.parse(await get(CRYPTO_URL));
+    const pick = (id, code, name) => j[id]?.ngn ? { code, name, ngn: j[id].ngn, usd: j[id].usd, change: Math.round((j[id].ngn_24h_change ?? j[id].usd_24h_change ?? 0) * 10) / 10 } : null;
+    const list = [pick("bitcoin", "BTC", "Bitcoin"), pick("ethereum", "ETH", "Ethereum"), pick("tether", "USDT", "Tether")].filter(Boolean);
+    return list.length ? { asOf: Date.now(), list } : null;
+  } catch (e) { console.log(`Crypto: failed (${e.message})`); return null; }
+}
+
 const old = existsSync("news.json") ? JSON.parse(readFileSync("news.json", "utf8")) : {};
-const [nigeria, world, fx] = await Promise.all([section(FEEDS.nigeria), section(FEEDS.world), rates()]);
-const next = { nigeria: nigeria.length ? nigeria : old.nigeria || [], world: world.length ? world : old.world || [], rates: fx || old.rates || null };
-const same = JSON.stringify({ ...next }) === JSON.stringify({ nigeria: old.nigeria, world: old.world, rates: old.rates });
-if (same) console.log("No change");
-else { writeFileSync("news.json", JSON.stringify({ updated: Date.now(), ...next }, null, 1)); console.log(`Wrote news.json: ${next.nigeria.length} Nigeria, ${next.world.length} world, rates ${next.rates ? "yes" : "no"}`); }
+const keys = Object.keys(FEEDS);
+const got = await Promise.all([...keys.map(k => section(FEEDS[k])), rates(), crypto()]);
+const next = {};
+keys.forEach((k, n) => { next[k] = got[n].length ? got[n] : old[k] || []; console.log(`${k}: ${next[k].length}`); });
+next.rates = got[keys.length] || old.rates || null;
+// Crypto prices move all the time: only refresh them when headlines or rates changed too, or every few hours.
+const fresh = got[keys.length + 1];
+const prevSame = JSON.stringify(keys.map(k => next[k]).concat([next.rates])) === JSON.stringify(keys.map(k => old[k]).concat([old.rates]));
+const cryptoDue = !old.crypto || Date.now() - old.crypto.asOf > 3 * 3600e3;
+next.crypto = fresh && (!prevSame || cryptoDue) ? fresh : old.crypto || fresh || null;
+if (prevSame && next.crypto === old.crypto) console.log("No change");
+else { writeFileSync("news.json", JSON.stringify({ updated: Date.now(), ...next }, null, 1)); console.log("Wrote news.json"); }
