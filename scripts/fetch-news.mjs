@@ -7,15 +7,17 @@ import { readFileSync, writeFileSync, existsSync } from "node:fs";
 const FEEDS = {
   top: [
     ["Premium Times", "https://www.premiumtimesng.com/feed"],
-    ["Vanguard", "https://www.vanguardngr.com/feed/"],
     ["Channels TV", "https://www.channelstv.com/feed/"],
+    ["Punch", "https://punchng.com/feed/"],
+    ["Vanguard", "https://www.vanguardngr.com/category/national-news/feed/"],
     ["BBC News", "https://feeds.bbci.co.uk/news/world/africa/rss.xml"],
   ],
   politics: [
     ["Vanguard", "https://www.vanguardngr.com/category/politics/feed/"],
-    ["Channels TV", "https://www.channelstv.com/category/politics/feed/"],
-    ["Premium Times", "https://www.premiumtimesng.com/news/politics/feed"],
-    ["The Cable", "https://www.thecable.ng/category/politics/feed"],
+    ["Daily Post", "https://dailypost.ng/politics/feed/"],
+    ["The Guardian Nigeria", "https://guardian.ng/category/politics/feed/"],
+    ["Leadership", "https://leadership.ng/category/politics/feed/"],
+    ["Premium Times", "https://www.premiumtimesng.com/category/news/top-news/feed"],
   ],
   nigeria: [
     ["Nairametrics", "https://nairametrics.com/feed/"],
@@ -32,20 +34,20 @@ const FEEDS = {
   sports: [
     ["BBC Sport", "https://feeds.bbci.co.uk/sport/football/rss.xml"],
     ["Vanguard", "https://www.vanguardngr.com/category/sports/feed/"],
-    ["Channels TV", "https://www.channelstv.com/category/sports/feed/"],
+    ["Daily Post", "https://dailypost.ng/sport-news/feed/"],
     ["BBC Sport", "https://feeds.bbci.co.uk/sport/rss.xml"],
   ],
   entertainment: [
     ["Vanguard", "https://www.vanguardngr.com/category/entertainment/feed/"],
     ["BBC News", "https://feeds.bbci.co.uk/news/entertainment_and_arts/rss.xml"],
-    ["Pulse Nigeria", "https://www.pulse.ng/rss"],
+    ["Daily Post", "https://dailypost.ng/entertainment/feed/"],
     ["Premium Times", "https://www.premiumtimesng.com/entertainment/feed"],
   ],
   tech: [
     ["TechCabal", "https://techcabal.com/feed/"],
-    ["Techpoint Africa", "https://techpoint.africa/feed/"],
     ["BBC News", "https://feeds.bbci.co.uk/news/technology/rss.xml"],
-    ["Techeconomy", "https://techeconomy.ng/feed/"],
+    ["TechCrunch", "https://techcrunch.com/feed/"],
+    ["Benjamin Dada", "https://www.benjamindada.com/rss/"],
   ],
 };
 const RATES_URL = "https://open.er-api.com/v6/latest/USD";
