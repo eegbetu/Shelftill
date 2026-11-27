@@ -8,13 +8,12 @@ const FEEDS = {
     ["Nairametrics", "https://nairametrics.com/feed/"],
     ["BusinessDay", "https://businessday.ng/feed/"],
     ["Premium Times", "https://www.premiumtimesng.com/business/feed"],
-    ["Punch", "https://punchng.com/topics/business/feed/"],
     ["Vanguard", "https://www.vanguardngr.com/category/business/feed/"],
   ],
   world: [
     ["BBC News", "https://feeds.bbci.co.uk/news/business/rss.xml"],
     ["TechCabal", "https://techcabal.com/feed/"],
-    ["The Guardian", "https://www.theguardian.com/uk/business/rss"],
+    ["CNBC", "https://www.cnbc.com/id/10001147/device/rss/rss.html"],
   ],
 };
 const RATES_URL = "https://open.er-api.com/v6/latest/USD";
